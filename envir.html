@@ -1,13 +1,7 @@
 <?php
-
 include 'mydb.php';
-
 $mysqli = NEW MySQLi('localhost', 'root', '', 'cafefinder');
-
-$result = $mysqli->query("SELECT * FROM `drinks`,`cafes` WHERE `Cafe`='Sweet Shop' AND `NAME`= 'Sweet Shop'");
 ?>
-
-
 <!DOCTYPE html>
 {% extends "header.html" %}
 {% block content %}
@@ -128,33 +122,29 @@ $result = $mysqli->query("SELECT * FROM `drinks`,`cafes` WHERE `Cafe`='Sweet Sho
         </ul>
 		</head>
 <body bgcolor="#995533">
-<?php
-        if($result->num_rows != 0)
-			$row = $result->fetch_assoc();
-        ?>
-    <h1 align="center">Sweet Shop</h1>
-	<h3 align="center"><?php echo $row['Hours_of_operation']; ?></h3>
-	<h3 align="center"><?php echo $row['Address']; ?></h3>
-    <table border="1" align="center" style="line-height:25px;">
-        <tr>
-            <th>NAME</th>
-            <th>Price</th>
-            <th>Strength</th>
-            <th>Iced/Hot</th>
-			<th>Size</th>
-        </tr>
-        <?php
-        do{
-        ?>
-        <tr>
-            <td><?php echo $row['Type']; ?></td>
-            <td><?php echo $row['Price']; ?></td>
-			<td><?php echo $row['Strength']; ?></td>
-            <td><?php echo $row['Iced_Hot']; ?></td>
-            <td><?php echo $row['Size']; ?></td>
-        </tr>
-        <?php }while($row = $result->fetch_assoc()); ?>
-    </table>
+<h1 align="center"><Cafe Environments</h1>
+<form action="advanced_funct.php"  method="get">
+  <fieldset>
+    <legend>Indoor/Outdoor</legend>
+    <input type="radio" name="seating" value="Indoor" checked> Indoor<br>
+    <input type="radio" name="seating" value="Outdoor"> Outdoor<br>
+	<input type="radio" name="seating" value="Both"> Both<br>
+  </fieldset>
+
+  <fieldset>
+    <legend>Study/Social</legend>
+    <input type="radio" name="people" value="Study" checked> Study<br>
+    <input type="radio" name="people" value="Social"> Social<br>
+	<input type="radio" name="people" value="Both"> Both<br>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Music</legend>
+    <input type="radio" name="music" value="y" checked> Yes!<br>
+    <input type="radio" name="music" value="n"> No<br>
+  </fieldset>
+  <br> <input type="submit" value="Submit">
+</form>
 </body>
 </html>
 {% endblock %}

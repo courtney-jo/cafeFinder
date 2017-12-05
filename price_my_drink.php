@@ -4,7 +4,10 @@ include 'mydb.php';
 
 $mysqli = NEW MySQLi('localhost', 'root', '', 'cafefinder');
 
-$result = $mysqli->query("SELECT * FROM `drinks`,`cafes` WHERE `Cafe`='Sweet Shop' AND `NAME`= 'Sweet Shop'");
+$p = $_POST['place'];
+$mp = $_POST['price'];
+$result = $mysqli->query("SELECT * FROM `drinks`,`cafes` WHERE `Cafe`='$p' AND `NAME`='$p' AND `Price`<='$mp'");
+$num = $mysqli->query("SELECT COUNT(`Type`) FROM `drinks`,`cafes` WHERE `Cafe`='$p' AND `NAME`='$p' AND `Price`<='$mp'");
 ?>
 
 
@@ -132,9 +135,8 @@ $result = $mysqli->query("SELECT * FROM `drinks`,`cafes` WHERE `Cafe`='Sweet Sho
         if($result->num_rows != 0)
 			$row = $result->fetch_assoc();
         ?>
-    <h1 align="center">Sweet Shop</h1>
-	<h3 align="center"><?php echo $row['Hours_of_operation']; ?></h3>
-	<h3 align="center"><?php echo $row['Address']; ?></h3>
+    <h1 align="center"><?php echo $row['Cafe']; ?></h1>
+	<h3 align="center"># of drinks: <?php echo $result->num_rows; ?></h3>
     <table border="1" align="center" style="line-height:25px;">
         <tr>
             <th>NAME</th>

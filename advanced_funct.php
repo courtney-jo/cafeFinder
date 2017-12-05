@@ -4,7 +4,15 @@ include 'mydb.php';
 
 $mysqli = NEW MySQLi('localhost', 'root', '', 'cafefinder');
 
-$result = $mysqli->query("SELECT * FROM `drinks`,`cafes` WHERE `Cafe`='Sweet Shop' AND `NAME`= 'Sweet Shop'");
+$s=$_GET['seating'];
+$p=$_GET['people'];
+$m=$_GET['music'];
+$b='Both';
+
+$result = $mysqli->query("SELECT Name FROM environment
+WHERE (Indoor_outdoor='$s' OR Indoor_outdoor='$b')
+AND (Study_social='$p' OR Study_social='$b') 
+AND music_played='$m'"); 
 ?>
 
 
@@ -127,34 +135,28 @@ $result = $mysqli->query("SELECT * FROM `drinks`,`cafes` WHERE `Cafe`='Sweet Sho
             <li style="float:left"><a class="a-dropbtn" href="about.html">About Us</a></li>
         </ul>
 		</head>
-<body bgcolor="#995533">
+<h1 align="center"><Cafe Environments</h1>
+<table border="1" align="center" style="line-height:25px;">
+<tr>
+<th>Name</th>
+
+</tr>
 <?php
-        if($result->num_rows != 0)
-			$row = $result->fetch_assoc();
-        ?>
-    <h1 align="center">Sweet Shop</h1>
-	<h3 align="center"><?php echo $row['Hours_of_operation']; ?></h3>
-	<h3 align="center"><?php echo $row['Address']; ?></h3>
-    <table border="1" align="center" style="line-height:25px;">
-        <tr>
-            <th>NAME</th>
-            <th>Price</th>
-            <th>Strength</th>
-            <th>Iced/Hot</th>
-			<th>Size</th>
-        </tr>
-        <?php
-        do{
-        ?>
-        <tr>
-            <td><?php echo $row['Type']; ?></td>
-            <td><?php echo $row['Price']; ?></td>
-			<td><?php echo $row['Strength']; ?></td>
-            <td><?php echo $row['Iced_Hot']; ?></td>
-            <td><?php echo $row['Size']; ?></td>
-        </tr>
-        <?php }while($row = $result->fetch_assoc()); ?>
-    </table>
+if($result->num_rows != 0){
+while($row = $result->fetch_assoc()){
+    ?>
+    <tr>
+    <td><?php echo $row['Name']; ?></td>
+    </tr>
+    <?php
+    }
+}
+else{
+    echo"no results";
+}
+
+?>
+</table>
 </body>
 </html>
 {% endblock %}

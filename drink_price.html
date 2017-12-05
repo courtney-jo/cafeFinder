@@ -1,10 +1,6 @@
 <?php
-
 include 'mydb.php';
-
 $mysqli = NEW MySQLi('localhost', 'root', '', 'cafefinder');
-
-$result = $mysqli->query("SELECT * FROM `drinks`,`cafes` WHERE `Cafe`='Sweet Shop' AND `NAME`= 'Sweet Shop'");
 ?>
 
 
@@ -13,6 +9,7 @@ $result = $mysqli->query("SELECT * FROM `drinks`,`cafes` WHERE `Cafe`='Sweet Sho
 {% block content %}
 
 <html>
+<body bgcolor="#995533">
 <head>
     <title> Cafe Finder</title>
     <style>
@@ -127,34 +124,26 @@ $result = $mysqli->query("SELECT * FROM `drinks`,`cafes` WHERE `Cafe`='Sweet Sho
             <li style="float:left"><a class="a-dropbtn" href="about.html">About Us</a></li>
         </ul>
 		</head>
-<body bgcolor="#995533">
-<?php
-        if($result->num_rows != 0)
-			$row = $result->fetch_assoc();
-        ?>
-    <h1 align="center">Sweet Shop</h1>
-	<h3 align="center"><?php echo $row['Hours_of_operation']; ?></h3>
-	<h3 align="center"><?php echo $row['Address']; ?></h3>
-    <table border="1" align="center" style="line-height:25px;">
-        <tr>
-            <th>NAME</th>
-            <th>Price</th>
-            <th>Strength</th>
-            <th>Iced/Hot</th>
-			<th>Size</th>
-        </tr>
-        <?php
-        do{
-        ?>
-        <tr>
-            <td><?php echo $row['Type']; ?></td>
-            <td><?php echo $row['Price']; ?></td>
-			<td><?php echo $row['Strength']; ?></td>
-            <td><?php echo $row['Iced_Hot']; ?></td>
-            <td><?php echo $row['Size']; ?></td>
-        </tr>
-        <?php }while($row = $result->fetch_assoc()); ?>
-    </table>
+<h1 align="center">Cafe Price Checker</h1>
+<form action="price_my_drink.php"  method="post">
+  <fieldset>
+    Select Your Cafe:<br>
+    <select name="place">
+      <option value="Black Dog Cafe">Black Dog Cafe</option>
+      <option value="Catalina Cafe">Catalina Cafe</option>
+      <option value="Lucky Goat">Lucky Goat</option>
+      <option value="Redeye Coffee">RedEye Coffee</option>
+	  <option value="Starbucks">Starbucks</option>
+      <option value="Sweet shop">Sweet Shop</option>
+    </select>
+  </fieldset>
+
+  <fieldset>
+    Price Under:<br>
+    <input type="text" name="price"><br>
+  </fieldset>
+  <br> <input type="submit" value="Submit">
+</form>
 </body>
 </html>
 {% endblock %}
