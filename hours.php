@@ -2,15 +2,10 @@
 
 include 'mydb.php';
 
-$mysqli = NEW MySQLi('localhost', 'root', 'secret', 'cafefinder');
+$mysqli = NEW MySQLi('localhost', 'root', '', 'cafefinder');
 
 $result = $mysqli->query("SELECT Hours_of_operation, NAME FROM cafes"); 
 ?>
-
-
-<!DOCTYPE html>
-{% extends "header.html" %}
-{% block content %}
 
 <html>
 <head>
@@ -126,6 +121,7 @@ $result = $mysqli->query("SELECT Hours_of_operation, NAME FROM cafes");
             </li>
             <li style="float:left"><a class="a-dropbtn" href="about.html">About Us</a></li>
         </ul>
+		</head>
 <body bgcolor="#995533">
 <?php
 	if($result->num_rows != 0)
@@ -149,5 +145,3 @@ $result = $mysqli->query("SELECT Hours_of_operation, NAME FROM cafes");
 	</table>
 </body>
 </html>
-
-{% endblock %}

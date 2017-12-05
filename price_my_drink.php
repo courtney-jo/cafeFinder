@@ -10,11 +10,6 @@ $result = $mysqli->query("SELECT * FROM `drinks`,`cafes` WHERE `Cafe`='$p' AND `
 $num = $mysqli->query("SELECT COUNT(`Type`) FROM `drinks`,`cafes` WHERE `Cafe`='$p' AND `NAME`='$p' AND `Price`<='$mp'");
 ?>
 
-
-<!DOCTYPE html>
-{% extends "header.html" %}
-{% block content %}
-
 <html>
 <head>
     <title> Cafe Finder</title>
@@ -113,7 +108,7 @@ $num = $mysqli->query("SELECT COUNT(`Type`) FROM `drinks`,`cafes` WHERE `Cafe`='
         <ul class="ul-style">
             <li style="float:left"><a href="header.html" class="a-dropbtn">Home    </a></li>
 			<li style="float:left"><a href="drink_price.html" class="a-dropbtn">Cafe Drink Calculator    </a></li>
-            <li style="float:left"><a href="Calendar.html" class="a-dropbtn">Hours of Operation    </a></li>
+            <li style="float:left"><a href="hours.php" class="a-dropbtn">Hours of Operation    </a></li>
             <li style="float:left"><a href="envir.html" class="a-dropbtn">Cafe Environment    </a></li>
             <li style="float:left"><a href="website.html" class="a-dropbtn">Cafe Website </a></li>
             <li class="dropdown">
@@ -159,4 +154,3 @@ $num = $mysqli->query("SELECT COUNT(`Type`) FROM `drinks`,`cafes` WHERE `Cafe`='
     </table>
 </body>
 </html>
-{% endblock %}

@@ -15,11 +15,6 @@ AND (Study_social='$p' OR Study_social='$b')
 AND music_played='$m'"); 
 ?>
 
-
-<!DOCTYPE html>
-{% extends "header.html" %}
-{% block content %}
-
 <html>
 <head>
     <title> Cafe Finder</title>
@@ -118,7 +113,7 @@ AND music_played='$m'");
         <ul class="ul-style">
             <li style="float:left"><a href="header.html" class="a-dropbtn">Home    </a></li>
 			<li style="float:left"><a href="drink_price.html" class="a-dropbtn">Cafe Drink Calculator    </a></li>
-            <li style="float:left"><a href="Calendar.html" class="a-dropbtn">Hours of Operation    </a></li>
+            <li style="float:left"><a href="hours.php" class="a-dropbtn">Hours of Operation    </a></li>
             <li style="float:left"><a href="envir.html" class="a-dropbtn">Cafe Environment    </a></li>
             <li style="float:left"><a href="website.html" class="a-dropbtn">Cafe Website </a></li>
             <li class="dropdown">
@@ -159,4 +154,3 @@ else{
 </table>
 </body>
 </html>
-{% endblock %}

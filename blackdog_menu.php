@@ -7,11 +7,6 @@ $mysqli = NEW MySQLi('localhost', 'root', '', 'cafefinder');
 $result = $mysqli->query("SELECT * FROM `drinks`,`cafes` WHERE `Cafe`='Black Dog Cafe' AND `NAME`= 'Black Dog Cafe'");
 ?>
 
-
-<!DOCTYPE html>
-{% extends "header.html" %}
-{% block content %}
-
 <html>
 <head>
     <title> Cafe Finder</title>
@@ -110,7 +105,7 @@ $result = $mysqli->query("SELECT * FROM `drinks`,`cafes` WHERE `Cafe`='Black Dog
         <ul class="ul-style">
             <li style="float:left"><a href="header.html" class="a-dropbtn">Home    </a></li>
 			<li style="float:left"><a href="drink_price.html" class="a-dropbtn">Cafe Drink Calculator    </a></li>
-            <li style="float:left"><a href="Calendar.html" class="a-dropbtn">Hours of Operation    </a></li>
+            <li style="float:left"><a href="hours.php" class="a-dropbtn">Hours of Operation    </a></li>
             <li style="float:left"><a href="envir.html" class="a-dropbtn">Cafe Environment    </a></li>
             <li style="float:left"><a href="website.html" class="a-dropbtn">Cafe Website </a></li>
             <li class="dropdown">
@@ -157,4 +152,3 @@ $result = $mysqli->query("SELECT * FROM `drinks`,`cafes` WHERE `Cafe`='Black Dog
     </table>
 </body>
 </html>
-{% endblock %}
