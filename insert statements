@@ -1,0 +1,5 @@
+
+insert into cafes values ('7:30-6pm', 'n', 'All Saints', '123 west call street','local')
+insert into drinks values ('Starbucks', '6', 'Unicorn', '8oz', 'iced', '4')
+insert into environment values('All Saints', 'Outdoor', 'Social','Classical')
+insert into website values('Starbucks', 'no', 'yes', 'no', 'no', 'Starbucks.com')
