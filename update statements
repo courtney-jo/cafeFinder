@@ -1,0 +1,2 @@
+update cafes set Hours_of_operation = '10:00-3pm' where NAME = 'Lucky Goat'
+update drinks set price = '5' where NAME = 'RedEye Coffee' AND Type = 'cold brew'
